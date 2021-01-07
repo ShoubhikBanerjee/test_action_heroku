@@ -1,10 +1,10 @@
 'use strict';
-const express = require('express');
+//const express = require('express');
 
 const { conversation } = require('@assistant/conversation');
 const functions = require('firebase-functions');
 
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 const port = process.env.PORT || 5000;
 //const app = dialogflow({debug:true});
 const app = conversation();
@@ -19,7 +19,7 @@ app.handle('sayHello', conv => {
 
 
 
-const expressApp = express(); 
+/*const expressApp = express(); 
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(bodyParser.json());
 
@@ -48,7 +48,7 @@ router.post('/', function(req, res) {
 
 
 expressApp.use('/', router);
-expressApp.listen(port);
+expressApp.listen(port);*/
 console.log('Magic happens on port ' + port)
 
 
