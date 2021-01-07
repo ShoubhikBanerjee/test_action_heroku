@@ -40,7 +40,16 @@ router.post('/', function(req, res) {
 	console.log("request params text in post > ", req.body.queryResult.parameters);
 	
 	
-	setTimeout(function(){ 
+	var delayed = new DelayedResponse(req, res);
+	slowFunction(delayed.wait());
+	
+	
+       
+});
+
+function slowFunction (callback) {
+  // let's do something that could take a while...
+  setTimeout(function(){ 
 	res.json({
   "payload": {
     "google": {
@@ -58,8 +67,7 @@ router.post('/', function(req, res) {
   }
 });
 	}, 50000);
-       
-});
+}
 
 
 expressApp.use('/', router);
