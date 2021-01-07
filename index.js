@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 5000;
 //const app = dialogflow({debug:true});
 const app = conversation();
+var DelayedResponse = require('http-delayed-response');
 
 
 app.handle('sayHello', conv => {
