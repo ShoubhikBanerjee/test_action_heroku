@@ -38,15 +38,20 @@ router.post('/', function(req, res) {
 	console.log("request in post > ");
 	
     res.json({
-  "fulfillmentMessages": [
-    {
-      "text": {
-        "text": [
-          "Text response from webhook"
+  "payload": {
+    "google": {
+      "expectUserResponse": true,
+      "richResponse": {
+        "items": [
+          {
+            "simpleResponse": {
+              "textToSpeech": "this is a Google Assistant response"
+            }
+          }
         ]
       }
     }
-  ]
+  }
 });   
 });
 
