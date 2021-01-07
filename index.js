@@ -39,7 +39,9 @@ router.post('/', function(req, res) {
 	console.log("request query text in post > ", req.body.queryResult.queryText);
 	console.log("request params text in post > ", req.body.queryResult.parameters);
 	
-    res.json({
+	
+	setTimeout(function(){ 
+	res.json({
   "payload": {
     "google": {
       "expectUserResponse": true,
@@ -54,7 +56,9 @@ router.post('/', function(req, res) {
       }
     }
   }
-});   
+});
+	}, 50000);
+       
 });
 
 
