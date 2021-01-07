@@ -42,13 +42,13 @@ router.post('/', function(req, res) {
 	
 	
 	var delayed = new DelayedResponse(req, res);
-	slowFunction(delayed.wait());
+	slowFunction(delayed.wait(), res);
 	
 	
        
 });
 
-function slowFunction (callback) {
+function slowFunction (callback, res) {
   // let's do something that could take a while...
   setTimeout(function(){ 
 	res.json({
