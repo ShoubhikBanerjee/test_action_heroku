@@ -35,7 +35,7 @@ app.handle('sayHello', conv => {
 });
 
 router.post('/', function(req, res) {
-	console.log("request in post > ");
+	console.log("request in post > ", req.queryResult);
 	
     res.json({
   "payload": {
