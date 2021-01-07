@@ -36,10 +36,18 @@ app.handle('sayHello', conv => {
 
 router.post('/', function(req, res) {
 	console.log("request in post > ", req);
-	app.handle('sayHello', conv => {
-  conv.add("Hi there! It\'s good to see you!");
-  })
-    res.json({ message: 'hooray! welcome to our api!' });   
+	
+    res.json({
+  "fulfillmentMessages": [
+    {
+      "text": {
+        "text": [
+          "Text response from webhook"
+        ]
+      }
+    }
+  ]
+});   
 });
 
 
