@@ -52,7 +52,7 @@ expressApp.listen(port);
 console.log('Magic happens on port ' + port)
 
 
-//exports.ActionsOnGoogleFulfillment = functions.https.onRequest(app)
+exports.ActionsOnGoogleFulfillment = functions.https.onRequest(app)
 
 
 // // Create and Deploy Your First Cloud Functions
