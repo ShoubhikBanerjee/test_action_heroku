@@ -26,7 +26,7 @@ expressApp.use(bodyParser.json());
 
 var router = express.Router();  
 
-/*router.get('/', function(req, res) {
+router.get('/', function(req, res) {
 	console.log("request in get > ", req);
 app.handle('sayHello', conv => {
   conv.add("Hi there! It\'s good to see you!");
@@ -40,12 +40,8 @@ router.post('/', function(req, res) {
   conv.add("Hi there! It\'s good to see you!");
   })
     res.json({ message: 'hooray! welcome to our api!' });   
-});/*
-
-/*router.post('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
 });
-*/
+
 
 expressApp.use('/', router);
 expressApp.listen(port);
