@@ -35,7 +35,7 @@ app.handle('sayHello', conv => {
 });
 
 router.post('/', function(req, res) {
-	console.log("request in post > ", req);
+	console.log("request in post > ");
 	
     res.json({
   "fulfillmentMessages": [
