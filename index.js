@@ -13,61 +13,77 @@ var DelayedResponse = require('http-delayed-response');
 
 app.handle('sayHello', conv => {
   conv.add("Hi there! It\'s good to see you!");
-  })
-  
- 
+})
 
 
 
 
-const expressApp = express(); 
+
+
+const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(bodyParser.json());
 
 
-var router = express.Router();  
+var router = express.Router();
 
-router.get('/', function(req, res) {
-	console.log("request in get > ", req);
-app.handle('sayHello', conv => {
-  conv.add("Hi there! It\'s good to see you!");
-  })	
-    res.json({ message: 'hooray! welcome to our api!' });   
+router.get('/', function (req, res) {
+  console.log("request in get > ", req);
+  app.handle('sayHello', conv => {
+    conv.add("Hi there! It\'s good to see you!");
+  })
+  res.json({ message: 'hooray! welcome to our api!' });
 });
 
-router.post('/', function(req, res) {
-	console.log("request intent in post > ", req.body.queryResult.intent.displayName);
-	console.log("request query text in post > ", req.body.queryResult.queryText);
-	console.log("request params text in post > ", req.body.queryResult.parameters);
-	
-	
-	var delayed = new DelayedResponse(req, res);
-	slowFunction(delayed.wait(), res);
-	
-	
-       
-});
+router.post('/', function (req, res) {
+  console.log("request intent in post > ", req.body.queryResult.intent.displayName);
+  console.log("request query text in post > ", req.body.queryResult.queryText);
+  console.log("request params text in post > ", req.body.queryResult.parameters);
 
-function slowFunction (callback, res) {
-  // let's do something that could take a while...
-  setTimeout(function(){ 
-	res.json({
-  "payload": {
-    "google": {
-      "expectUserResponse": true,
-      "richResponse": {
-        "items": [
-          {
-            "simpleResponse": {
-              "textToSpeech": "this is a Google Assistant response"
+
+  // var delayed = new DelayedResponse(req, res);
+  // slowFunction(delayed.wait(), res);
+  res.json({
+    "payload": {
+      "google": {
+        "expectUserResponse": true,
+        "richResponse": {
+          "items": [
+            {
+              "simpleResponse": {
+                "textToSpeech": "this is a Google Assistant response"
+              }
             }
-          }
-        ]
+          ]
+        }
       }
     }
-  }
+  });
+
+
+
 });
-	}, 50000);
+
+function slowFunction(callback, res) {
+  // let's do something that could take a while...
+  setTimeout(function () {
+    res.json({
+      "payload": {
+        "google": {
+          "expectUserResponse": true,
+          "richResponse": {
+            "items": [
+              {
+                "simpleResponse": {
+                  "textToSpeech": "this is a Google Assistant response"
+                }
+              }
+            ]
+          }
+        }
+      }
+    });
+  }, 50000);
 }
 
 
