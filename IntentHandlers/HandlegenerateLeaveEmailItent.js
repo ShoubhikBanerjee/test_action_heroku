@@ -57,8 +57,8 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                     duration_string = "from " + formatted_from_date.toString() + " to " + formatted_to_date.toString();
                 }
                 console.log("7")
-                var selected_template_idx = chooseTemplateViaLength(LeaveEmailTemplate.length(), min = 0, retun_count = 1)[0];
-                var selected_template_text = LeaveEmailTemplate[selected_template_idx];
+                var selected_template_idx = chooseTemplateViaLength(LeaveEmailTemplate.length, min = 0, retun_count = 1)[0];
+                var selected_template_text = LeaveEmailTemplate[selected_template_idx].template;
                 selected_template_text = selected_template_text.replace("$date", duration_string);
                 selected_template_text = selected_template_text.replace("$leave_reson", leave_reason)
                 console.log("8")
