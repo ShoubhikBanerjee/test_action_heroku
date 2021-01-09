@@ -42,8 +42,10 @@ router.post('/', function (req, res) {
   console.log("Intent Param : ", intent_params)
   if (intent_name === "generate_leave_email") {
     handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
+      console.log("7")
       sendReply(result, res)
     }).catch((err) => {
+      console.log("8")
       sendReply(err, res)
     })
   }
@@ -56,6 +58,7 @@ router.post('/', function (req, res) {
 });
 
 function sendReply(response_json, response_callback) {
+  console.log("9")
   response_callback.json({
     "payload": {
       "google": {
