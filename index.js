@@ -9,11 +9,8 @@ const port = process.env.PORT || 5000;
 //const app = dialogflow({debug:true});
 const app = conversation();
 var DelayedResponse = require('http-delayed-response');
+const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandlegenerateLeaveEmailItent');
 
-
-app.handle('sayHello', conv => {
-  conv.add("Hi there! It\'s good to see you!");
-})
 
 
 
@@ -36,13 +33,26 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-  console.log("request intent in post > ", req.body.queryResult.intent.displayName);
-  console.log("request query text in post > ", req.body.queryResult.queryText);
-  console.log("request params text in post > ", req.body.queryResult.parameters);
+  var intent_name = req.body.queryResult.intent.displayName;
+  var query_text = req.body.queryResult.queryText;
+  var intent_params = req.body.queryResult.parameters;
+
+  if (intent_name === "generate_leave_email") {
+    handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
+      sendReply(result, res)
+    }).catch((err) => {
+      sendReply(err, res)
+    })
+  }
+
 
 
   // var delayed = new DelayedResponse(req, res);
   // slowFunction(delayed.wait(), res);
+
+});
+
+function sendReply(response_json, response_callback) {
   res.json({
     "payload": {
       "google": {
@@ -51,7 +61,7 @@ router.post('/', function (req, res) {
           "items": [
             {
               "simpleResponse": {
-                "textToSpeech": "this is a Google Assistant response"
+                "textToSpeech": response_json.msg
               }
             }
           ]
@@ -59,10 +69,7 @@ router.post('/', function (req, res) {
       }
     }
   });
-
-
-
-});
+}
 
 function slowFunction(callback, res) {
   // let's do something that could take a while...
