@@ -42,10 +42,10 @@ router.post('/', function (req, res) {
   console.log("Intent Param : ", intent_params)
   if (intent_name === "generate_leave_email") {
     handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
-      console.log("7")
+      console.log("1")
       sendReply(result, res)
     }).catch((err) => {
-      console.log("8")
+      console.log("2")
       sendReply(err, res)
     })
   }
