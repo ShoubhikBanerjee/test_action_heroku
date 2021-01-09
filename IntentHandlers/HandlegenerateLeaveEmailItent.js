@@ -20,7 +20,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 var duration = parameter.duration;
                 var mail_to = parameter.send_to_email;
                 console.log("Duration =>", duration)
-                console.log("type of duration : ", typeof(duration))
+                console.log("type of duration : ", typeof (duration))
                 var formatted_from_date = moment(from_date).format("DD-MM-YYYY");
                 var to_email_id = null;
                 if (mail_to === "null") {
@@ -34,9 +34,11 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 var duration_string = "";
                 if (to_date === "") {
                     if (duration === "") {
+
+                    } else {
                         var amount = duration.amount;
                         var unit = duration.unit;
-                        console.log("Duration unit : "  +str(unit))
+                        console.log("Duration unit : " + str(unit))
                         if ((unit === "wk") || (unit === "mo") || (unit === "day")) {
                             if (unit === "wk") {
                                 console.log("In WK")
@@ -57,7 +59,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 }
                 console.log("6")
                 console.log("FOrmated to date => ", formatted_to_date)
-                console.log("Type FOrmated to date => ", typeof(formatted_to_date))
+                console.log("Type FOrmated to date => ", typeof (formatted_to_date))
                 if (formatted_to_date === null) {
                     console.log("In Null 1")
                     duration_string = "from " + formatted_from_date.toString();
