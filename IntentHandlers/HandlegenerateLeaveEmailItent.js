@@ -55,8 +55,10 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 console.log("6")
                 console.log("FOrmated to date => ", formatted_to_date)
                 if (formatted_to_date === null) {
+                    console.log("In Null 1")
                     duration_string = "from " + formatted_from_date.toString();
                 } else {
+                    console.log("In Not Null 1")
                     duration_string = "from " + formatted_from_date.toString() + " to " + formatted_to_date.toString();
                 }
                 console.log("7")
