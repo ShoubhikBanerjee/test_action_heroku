@@ -1,3 +1,5 @@
+
+// var moment = require('moment'); // require
 var moment = require('moment-timezone');
 moment().tz("Asia/Kolkata").format();
 const LeaveEmailTemplate = require('../Configs/LeaveEmailTemplates.json');
