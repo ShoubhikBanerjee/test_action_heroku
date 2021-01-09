@@ -37,6 +37,9 @@ router.post('/', function (req, res) {
   var query_text = req.body.queryResult.queryText;
   var intent_params = req.body.queryResult.parameters;
 
+  console.log("Intent : ", intent_name);
+  console.log("Query text : ", query_text);
+  console.log("Intent Param : ", intent_params)
   if (intent_name === "generate_leave_email") {
     handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
       sendReply(result, res)
