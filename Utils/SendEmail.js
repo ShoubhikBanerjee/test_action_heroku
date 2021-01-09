@@ -7,7 +7,7 @@ module.exports.sendEmail = function (to_email, subject, body, html_content = nul
     console.log("Body => ", body)
     console.log("Html Content => ", html_content)
     var smtpTransport = nodemailer.createTransport("SMTP", {
-        service: "Gmail",
+        service: "smtp-relay.gmail.com",
         auth: {
             user: "autotechbots@gmail.com",
             pass: "get2work"
