@@ -22,12 +22,9 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
             var to_email_id = null;
             if (mail_to === "null") {
                 console.log("2")
-
-                sendResolveResponse("Okay I will generate and send the email to shoubhik@hexaride.com", resolve)
                 to_email_id = "shoubhik@hexaride.com";
             } else {
                 console.log("3")
-                sendResolveResponse("Okay I will generate and send the email to " + parameter.send_to_email, resolve)
                 to_email_id = mail_to;
             }
             var formatted_to_date = null;
@@ -66,7 +63,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
 
             var subject = "Demo Leave application " + duration_string + leave_reason;
             sendEmail(to_email_id, subject, selected_template_text, html_content = null)
-
+            sendResolveResponse("Okay I will generate and send the email to "+ to_email_id, resolve)
 
 
 
