@@ -38,7 +38,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                     } else {
                         var amount = duration.amount;
                         var unit = duration.unit;
-                        console.log("Duration unit : " + str(unit))
+                        console.log("Duration unit : " + unit.toString())
                         if ((unit === "wk") || (unit === "mo") || (unit === "day")) {
                             if (unit === "wk") {
                                 console.log("In WK")
