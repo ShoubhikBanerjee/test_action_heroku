@@ -53,7 +53,7 @@ router.post('/', function (req, res) {
 });
 
 function sendReply(response_json, response_callback) {
-  res.json({
+  response_callback.json({
     "payload": {
       "google": {
         "expectUserResponse": true,
