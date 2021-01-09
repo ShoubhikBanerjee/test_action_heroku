@@ -7,13 +7,12 @@ module.exports.sendEmail = function (to_email, subject, body, html_content = nul
     console.log("Subject => ", subject);
     console.log("Body => ", body)
     console.log("Html Content => ", html_content)
-    var smtpTransport = nodemailer.createTransport("SMTP", {
-        service: "smtp-relay.gmail.com",
+    var smtpTransport = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
         auth: {
-            xoauth2: xoauth2.createXOAuth2Generator({
-                user: "autotechbots@gmail.com",
-                pass: "get2work"
-            })
+            user: "autotechbots@gmail.com",
+            pass: "get2work"
         }
     });
     var mailOptions = {
