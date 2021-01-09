@@ -19,6 +19,8 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 var leave_reason = parameter.leave_reason;
                 var duration = parameter.duration;
                 var mail_to = parameter.send_to_email;
+                console.log("Duration =>", duration)
+                console.log("type of duration : ", typeof(duration))
                 var formatted_from_date = moment(from_date).format("DD-MM-YYYY");
                 var to_email_id = null;
                 if (mail_to === "null") {
