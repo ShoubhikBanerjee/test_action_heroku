@@ -68,9 +68,9 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
             sendEmail(to_email_id, subject, selected_template_text, html_content = null)
 
 
-        }
 
-    }
+
+        }
 
 
 
@@ -78,26 +78,26 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
 
     });
 
-function sendRejectResponse(err_msg, reject) {
-    console.log(4)
-    var response = {
-        "msg": err_msg,
-        "meta_data": meta_data,
-        "session": session
+    function sendRejectResponse(err_msg, reject) {
+        console.log(4)
+        var response = {
+            "msg": err_msg,
+            "meta_data": meta_data,
+            "session": session
+        }
+        reject(response);
+        console.log('Oops, an error occured %s', err_msg);
     }
-    reject(response);
-    console.log('Oops, an error occured %s', err_msg);
-}
 
-function sendResolveResponse(msg, resolve, meta_data = null) {
-    console.log("5")
-    var response = {
-        "msg": msg,
-        "meta_data": meta_data,
-        "session": session
+    function sendResolveResponse(msg, resolve, meta_data = null) {
+        console.log("5")
+        var response = {
+            "msg": msg,
+            "meta_data": meta_data,
+            "session": session
+        }
+        resolve(response);
+        // return res;
     }
-    resolve(response);
-    // return res;
-}
 };
 
