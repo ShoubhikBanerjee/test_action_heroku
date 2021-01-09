@@ -53,6 +53,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                     formatted_to_date = moment(to_date).format("DD-MM-YYYY");
                 }
                 console.log("6")
+                console.log("FOrmated to date => ", formatted_to_date)
                 if (formatted_to_date === null) {
                     duration_string = "from " + formatted_from_date.toString();
                 } else {
