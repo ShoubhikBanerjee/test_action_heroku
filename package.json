@@ -16,7 +16,8 @@
     "firebase-functions": "^3.11.0",
     "http-delayed-response": "0.0.4",
     "moment-timezone": "^0.5.32",
-    "nodemailer": "^6.4.17"
+    "nodemailer": "^6.4.17",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"

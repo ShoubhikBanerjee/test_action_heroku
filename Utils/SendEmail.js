@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+var xoauth2 = require('xoauth2');
 
 module.exports.sendEmail = function (to_email, subject, body, html_content = null) {
     console.log("-------------------------- Sending Mail-----------------------------")
@@ -9,8 +10,10 @@ module.exports.sendEmail = function (to_email, subject, body, html_content = nul
     var smtpTransport = nodemailer.createTransport("SMTP", {
         service: "smtp-relay.gmail.com",
         auth: {
-            user: "autotechbots@gmail.com",
-            pass: "get2work"
+            xoauth2: xoauth2.createXOAuth2Generator({
+                user: "autotechbots@gmail.com",
+                pass: "get2work"
+            })
         }
     });
     var mailOptions = {
@@ -24,8 +27,8 @@ module.exports.sendEmail = function (to_email, subject, body, html_content = nul
             console.log(error);
             console.log("------------------------------- Mail Send End : Error-------------------------")
         } else {
-           console.log("Mail send successfully")
-           console.log("------------------------------- Mail Send End: Success-------------------------")
+            console.log("Mail send successfully")
+            console.log("------------------------------- Mail Send End: Success-------------------------")
         }
     });
 };
