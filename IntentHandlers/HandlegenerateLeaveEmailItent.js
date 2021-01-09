@@ -87,7 +87,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
         console.log(4)
         var response = {
             "msg": err_msg,
-            "meta_data": meta_data,
+            "meta_data": "meta_data",
             "session": session
         }
         reject(response);
