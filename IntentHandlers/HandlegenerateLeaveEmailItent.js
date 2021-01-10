@@ -77,7 +77,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 selected_template_text = selected_template_text.replace("$date", duration_string);
                 selected_template_text = selected_template_text.replace("$leave_reson", leave_reason)
                 console.log("8")
-                var subject = "Demo Leave application " + duration_string + leave_reason;
+                var subject = "Demo Leave application " + duration_string + " "+leave_reason;
                 sendEmail(to_email_id, subject, selected_template_text, html_content = null)
                 console.log("9")
                 sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)

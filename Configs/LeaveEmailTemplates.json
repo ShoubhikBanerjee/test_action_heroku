@@ -1,5 +1,5 @@
 [
     {
-        "template":"Good morning,\\n\\n\\t This is to inform you that I did not attend my office $date $leave_reson.\\nKindly grant me a leave for yesterday.\\n\\n\\n\\nThanks with Regards,"
+        "template":"Good morning,\\n\\n\\t This is to inform you that I will not be able to attend my office $date $leave_reson.\\nKindly grant me leave for the above mentioned day(s).\\n\\n\\n\\nThanks with Regards,"
     }
 ]
