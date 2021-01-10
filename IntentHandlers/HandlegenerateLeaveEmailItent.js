@@ -43,16 +43,16 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                         console.log("Duration unit : " + unit.toString())
                         if ((unit === "wk") || (unit === "mo") || (unit === "day")) {
                             if (unit === "wk") {
-                                console.log("In WK : ", typeof(formatted_from_date))
+                                console.log("In WK : ", typeof (formatted_from_date))
                                 console.log("Formatted from date : ", formatted_from_date)
 
-                                formatted_to_date = moment(formatted_from_date).add(amount, 'weeks')
+                                formatted_to_date = moment(formatted_from_date, "DD-MM-YYYY").add(amount, 'weeks').format("DD-MM-YYYY")
                             } else if (unit === "mo") {
                                 console.log("In WK")
-                                formatted_to_date = formatted_from_date.add(amount, 'months')
+                                formatted_to_date = moment(formatted_from_date, "DD-MM-YYYY").add(amount, 'months').format("DD-MM-YYYY")
                             } else if (unit === "day") {
                                 console.log("In WK")
-                                formatted_to_date = formatted_from_date.add(amount, 'days')
+                                formatted_to_date = moment(formatted_from_date, "DD-MM-YYYY").add(amount, 'days').format("DD-MM-YYYY")
                             }
                         } else {
                             sendRejectResponse("Sorry I couldnot get your duration, please try again!", reject)
