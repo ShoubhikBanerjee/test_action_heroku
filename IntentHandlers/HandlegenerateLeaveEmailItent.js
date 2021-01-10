@@ -14,7 +14,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 console.log("3")
                 sendRejectResponse("Params are undefined", reject)
             } else {
-                sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)
+                
                 console.log("Query text : ", query_text)
                 console.log("Param => ", parameter);
                 var from_date = parameter.from_date;
@@ -62,6 +62,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 } else {
                     formatted_to_date = moment(to_date).format("DD-MM-YYYY");
                 }
+                sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)
                 console.log("6")
                 console.log("FOrmated to date => ", formatted_to_date)
                 console.log("Type FOrmated to date => ", typeof (formatted_to_date))
