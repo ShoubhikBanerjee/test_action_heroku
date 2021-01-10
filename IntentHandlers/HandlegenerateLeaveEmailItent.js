@@ -14,6 +14,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 console.log("3")
                 sendRejectResponse("Params are undefined", reject)
             } else {
+                sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)
                 console.log("Query text : ", query_text)
                 console.log("Param => ", parameter);
                 var from_date = parameter.from_date;
@@ -80,7 +81,7 @@ module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, 
                 var subject = "Demo Leave application " + duration_string + " "+leave_reason;
                 sendEmail(to_email_id, subject, selected_template_text, html_content = null)
                 console.log("9")
-                sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)
+                // sendResolveResponse("Okay I will generate and send the email to " + to_email_id, resolve)
                 console.log("10")
             }
 
