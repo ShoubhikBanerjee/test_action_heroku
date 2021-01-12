@@ -10,6 +10,6 @@ module.exports.updateFirebaseDocument = function (document_name, key, value) {
     const docRef = db.collection('autobot-device-handler').where('device_name', '==', document_name);
 
     // Set the 'capital' field of the city
-    const res = await docRef.update({ key: value });
+    docRef.update({ key: value });
 
 }
