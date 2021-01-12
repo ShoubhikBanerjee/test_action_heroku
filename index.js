@@ -9,13 +9,7 @@ const port = process.env.PORT || 5000;
 //const app = dialogflow({debug:true});
 const app = conversation();
 var DelayedResponse = require('http-delayed-response');
-const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandlegenerateLeaveEmailItent');
-
-
-
-
-
-
+const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandleGenerateLeaveEmailIntent');
 
 const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
