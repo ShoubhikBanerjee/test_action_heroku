@@ -12,7 +12,7 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
 
                 console.log("Query text : ", query_text)
                 console.log("Param => ", parameter);
-                var device_action = parameter.device_action;
+                var device_action = parameter.device_actions;
                 var apps = parameter.apps;
                 var devices = parameter.devices;
                 if (devices === "PersonalLaptop") {
