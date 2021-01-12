@@ -12,7 +12,7 @@ const { updateFirebaseDocument } = require("./FirebaseHandler");
 // var date2= moment(date1, "DD-MM-YYYY").add(1,"w").format("DD-MM-YYYY")
 // console.log(date2)
 
-var op = updateFirebaseDocument("personal_laptop","open_vs_code",false)
+var op = updateFirebaseDocument("personal_laptop","open_skype",true)
 console.log(op)
 
 // var admin = require("firebase-admin");

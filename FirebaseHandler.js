@@ -9,11 +9,11 @@ module.exports.updateFirebaseDocument = function (document_name, key, value) {
     
     const db = admin.firestore();
     var key2 = ("app_trigger_config." + key).toString();
-    console.log("Key => ", key)
+    console.log("document_name => ", document_name)
     var docRef = db.collection('autobot-device-handler').doc(document_name)
     var jsonVariable = {};
     jsonVariable[key2] = value; 
-    // Set the 'capital' field of the city
+    console.log("JSON => ", jsonVariable)
     var res = docRef.update(jsonVariable)
         .then(function () {
             console.log("Update : ")
