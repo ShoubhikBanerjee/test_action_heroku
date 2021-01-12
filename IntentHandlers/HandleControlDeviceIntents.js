@@ -18,38 +18,38 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                 if (devices === "PersonalLaptop") {
                     var all_okay = true;
                     if (apps === "VSCode") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_vs_code", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_vs_code", false)
                         }
 
                     } else if (apps === "Skype") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_skype", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_skype", false)
                         }
                     } else if (apps === "NotepadPP") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_notepad_pp", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_notepad_pp", false)
                         }
                     } else if (apps === "Browser") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_default_browser", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_default_browser", false)
                         }
                     } else if (apps === "HexaMail") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_hexa_email", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_hexa_email", false)
                         }
                     } else if (apps === "B4BMail") {
-                        if (device_action === "Start") {
+                        if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "open_b4b_email", true)
                         } else {
                             updateFirebaseDocument("personal_laptop", "open_b4b_email", false)
