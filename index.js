@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 const app = conversation();
 var DelayedResponse = require('http-delayed-response');
 const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandleGenerateLeaveEmailIntent');
+const { handleControlDeviceIntent } = require('./IntentHandlers/HandleControlDeviceIntents');
 
 const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +37,14 @@ router.post('/', function (req, res) {
   console.log("Intent Param : ", intent_params)
   if (intent_name === "generate_leave_email") {
     handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
+      console.log("1")
+      sendReply(result, res)
+    }).catch((err) => {
+      console.log("2")
+      sendReply(err, res)
+    })
+  }else if (intent_name === "device_action") {
+    handleControlDeviceIntent(query_text, intent_params).then((result) => {
       console.log("1")
       sendReply(result, res)
     }).catch((err) => {

@@ -2,7 +2,7 @@ const e = require("express");
 const { updateFirebaseDocument } = require("../FirebaseHandler");
 
 
-module.exports.handleGenerateLeaveMailIntent = function (query_text, parameter, session = "null") {
+module.exports.handleControlDeviceIntent = function (query_text, parameter, session = "null") {
     return new Promise(function (resolve, reject) {
         try {
             if ((query_text === undefined) || (parameter === undefined)) {
