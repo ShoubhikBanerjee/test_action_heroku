@@ -1,15 +1,27 @@
 
 var admin = require("firebase-admin");
 var serviceAccount = require("./Keys/auto-bot-3c17c-firebase-adminsdk-rsdhn-19b8c738ab.json");
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
 
-const db = admin.firestore();
 module.exports.updateFirebaseDocument = function (document_name, key, value) {
-    const docRef = db.collection('autobot-device-handler').where('device_name', '==', document_name);
-
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+    });
+    
+    const db = admin.firestore();
+    var key2 = ("app_trigger_config." + key).toString();
+    console.log("Key => ", key)
+    var docRef = db.collection('autobot-device-handler').doc(document_name)
+    var jsonVariable = {};
+    jsonVariable[key2] = value; 
     // Set the 'capital' field of the city
-    docRef.update({ key: value });
+    var res = docRef.update(jsonVariable)
+        .then(function () {
+            console.log("Update : ")
+            return true
+        }).catch(function (e) {
+            console.log("Error : ", e)
+            return false
+        });
+    console.log(res)
 
 }
