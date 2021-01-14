@@ -6,13 +6,14 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-module.exports.updateFirebaseDocument = function (document_name, key, value) {
+module.exports.updateFirebaseDocument = function (document_name, key, value, temp_custom_directory) {
    
     var key2 = ("app_trigger_config." + key).toString();
     console.log("document_name => ", document_name)
     var docRef = db.collection('autobot-device-handler').doc(document_name)
     var jsonVariable = {};
     jsonVariable[key2] = value; 
+    jsonVariable["temp_value_custom_dir"] = temp_custom_directory;
     console.log("JSON => ", jsonVariable)
     var res = docRef.update(jsonVariable)
         .then(function () {
