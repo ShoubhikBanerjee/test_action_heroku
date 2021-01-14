@@ -20,40 +20,40 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                     var all_okay = true;
                     if (apps === "VSCode") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_vs_code", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "vs_code", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_vs_code", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "vs_code", false, custom_directory)
                         }
 
                     } else if (apps === "Skype") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_skype", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "skype", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_skype", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "skype", false, custom_directory)
                         }
                     } else if (apps === "NotepadPP") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_notepad_pp", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "notepad_pp", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_notepad_pp", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "notepad_pp", false, custom_directory)
                         }
                     } else if (apps === "Browser") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_default_browser", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "default_browser", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_default_browser", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "default_browser", false, custom_directory)
                         }
                     } else if (apps === "HexaMail") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_hexa_email", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "hexa_email", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_hexa_email", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "hexa_email", false, custom_directory)
                         }
                     } else if (apps === "B4BMail") {
                         if (device_action === "start") {
-                            updateFirebaseDocument("personal_laptop", "open_b4b_email", true, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "b4b_email", true, custom_directory)
                         } else {
-                            updateFirebaseDocument("personal_laptop", "open_b4b_email", false, custom_directory)
+                            updateFirebaseDocument("personal_laptop", "b4b_email", false, custom_directory)
                         }
                     } else {
                         all_okay = false;
