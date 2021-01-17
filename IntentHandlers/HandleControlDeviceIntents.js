@@ -16,6 +16,9 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                 var apps = parameter.apps;
                 var devices = parameter.devices;
                 var custom_directory = parameter.custom_directories;
+                if ((custom_directory === undefined)||(custom_directory === null)){
+                    custom_directory = "null"
+                }
                 if (devices === "PersonalLaptop") {
                     var all_okay = true;
                     if ((apps === undefined) || (apps === null)) {
