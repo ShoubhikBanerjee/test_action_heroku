@@ -16,7 +16,7 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                 var apps = parameter.apps;
                 var devices = parameter.devices;
                 var custom_directory = parameter.custom_directories;
-                if ((custom_directory === undefined)||(custom_directory === null)){
+                if ((custom_directory === undefined) || (custom_directory === null)) {
                     custom_directory = "null"
                 }
                 if (devices === "PersonalLaptop") {
@@ -71,8 +71,14 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                     }
 
                     if (all_okay) {
-                        sendResolveResponse("Okay I will " + device_action + "  " + apps + " on your " + devices, resolve)
+                        if ((apps === undefined) || (apps === null)) {
+                            sendResolveResponse("Okay I will " + device_action + " your " + devices, resolve)
+                        } else {
+                            sendResolveResponse("Okay I will " + device_action + "  " + apps + " on your " + devices, resolve)
+                        }
+
                     } else {
+
                         sendRejectResponse("Sorry ! The app " + apps + " is not recognized !", reject)
                     }
                 } else {
