@@ -18,7 +18,15 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                 var custom_directory = parameter.custom_directories;
                 if (devices === "PersonalLaptop") {
                     var all_okay = true;
-                    if (apps === "VSCode") {
+                    if ((apps === undefined) || (apps === null)) {
+                        if (device_action === "close") {
+                            updateFirebaseDocument("personal_laptop", "lock_windows", true, custom_directory)
+                        } else {
+                            updateFirebaseDocument("personal_laptop", "lock_windows", false, custom_directory)
+                        }
+
+                    }
+                    else if (apps === "VSCode") {
                         if (device_action === "start") {
                             updateFirebaseDocument("personal_laptop", "vs_code", true, custom_directory)
                         } else {
@@ -55,13 +63,6 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                         } else {
                             updateFirebaseDocument("personal_laptop", "b4b_email", false, custom_directory)
                         }
-                    } else if (apps === "LockWindows") {
-                        if (device_action === "close") {
-                            updateFirebaseDocument("personal_laptop", "lock_windows", true, custom_directory)
-                        } else {
-                            updateFirebaseDocument("personal_laptop", "lock_windows", false, custom_directory)
-                        }
-
                     } else {
                         all_okay = false;
                     }
