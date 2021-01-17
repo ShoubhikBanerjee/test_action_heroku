@@ -51,6 +51,14 @@ router.post('/', function (req, res) {
       console.log("2")
       sendReply(err, res)
     })
+  }else if (intent_name === "device_actions_app_less") {
+    handleControlDeviceIntent(query_text, intent_params).then((result) => {
+      console.log("1")
+      sendReply(result, res)
+    }).catch((err) => {
+      console.log("2")
+      sendReply(err, res)
+    })
   }
 
 
