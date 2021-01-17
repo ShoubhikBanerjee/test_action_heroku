@@ -56,7 +56,7 @@ module.exports.handleControlDeviceIntent = function (query_text, parameter, sess
                             updateFirebaseDocument("personal_laptop", "b4b_email", false, custom_directory)
                         }
                     } else if (apps === "LockWindows") {
-                        if (device_action === "start") {
+                        if (device_action === "close") {
                             updateFirebaseDocument("personal_laptop", "lock_windows", true, custom_directory)
                         } else {
                             updateFirebaseDocument("personal_laptop", "lock_windows", false, custom_directory)
