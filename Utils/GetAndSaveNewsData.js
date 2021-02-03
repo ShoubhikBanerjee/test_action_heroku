@@ -36,6 +36,10 @@ module.exports.fetchAndSaveNewsData = function () {
 
 
     function writeTheNewsToFile(data) {
-        fs.writeFile("LatestNews.txt", data)
+        
+        fs.writeFile('LatestNews.txt', data.toString(), function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+          }); 
     }
 };
