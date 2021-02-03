@@ -10,10 +10,11 @@ moment().tz("Asia/Kolkata").format();
 module.exports.handleWelcomeIntent = function (query_text, parameter, session = "null") {
     return new Promise(function (resolve, reject) {
         try {
-            fetchAndSaveNewsData()
+           
             var index_to_choose = chooseTemplateViaLength(WelcomeResponses.length)
             sendResolveResponse(WelcomeResponses[index_to_choose], resolve)
             console.log("8")
+            fetchAndSaveNewsData()
         } catch (e) {
             console.log("Error : ", e)
             sendRejectResponse("Error : " + e.toString(), reject)
