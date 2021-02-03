@@ -9,6 +9,7 @@ moment().tz("Asia/Kolkata").format();
 module.exports.handleGetLatestNewsIntent = function (query_text, parameter, session = "null") {
     return new Promise(function (resolve, reject) {
         try {
+            console.log("In Get Latest News : ")
             // var current_date = moment.tz(moment(), 'Asia/Kolkata').format('DD/MM/YYYY HH:mm');
             // getLastNewsFromFirebase().then(function (res) {
             //     console.log("Retrived : ::: ", res)
@@ -25,7 +26,13 @@ module.exports.handleGetLatestNewsIntent = function (query_text, parameter, sess
             //     console.log("Error : ", e)
             //     sendRejectResponse("Error : in fetchingnews from FB ! :(", reject)
             // });
-
+            fs.readFile('LatestNews.txt', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                console.log(data)
+            })
             sendResolveResponse(fs.readFileSync("LatestNews.txt", "utf8"), resolve)
 
         } catch (e) {
