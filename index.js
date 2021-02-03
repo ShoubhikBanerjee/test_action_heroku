@@ -12,7 +12,8 @@ var DelayedResponse = require('http-delayed-response');
 const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandleGenerateLeaveEmailIntent');
 const { handleControlDeviceIntent } = require('./IntentHandlers/HandleControlDeviceIntents');
 const { handleGetLatestNewsIntent } = require("./IntentHandlers/HandleLatestNewsIntent")
-const { fetchAndSaveNewsData } = require("./Utils/GetAndSaveNewsData")
+const { fetchAndSaveNewsData } = require("./Utils/GetAndSaveNewsData");
+const { handleWelcomeIntent } = require('./IntentHandlers/HandleWelcomeIntent');
 const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(bodyParser.json());
