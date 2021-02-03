@@ -1,6 +1,7 @@
 // const { sendEmail } = require("./Utils/SendEmail");
 
-const { updateFirebaseDocument } = require("./FirebaseHandler");
+const { updateFirebaseDocument, getLastNewsFromFirebase } = require("./FirebaseHandler");
+const { handleGetLatestNewsIntent } = require("./IntentHandlers/HandleLatestNewsIntent");
 
 
 // sendEmail("shoubhik@hexaride.com","Test", "test")
@@ -27,6 +28,16 @@ const { updateFirebaseDocument } = require("./FirebaseHandler");
 // const res = db.collection('autobot-device-handler').doc('personal_laptop').set(data);
 
 
-const {fetchAndSaveNewsData} = require("./Utils/GetAndSaveNewsData")
+// const { fetchAndSaveNewsData } = require("./Utils/GetAndSaveNewsData")
 
-fetchAndSaveNewsData()
+// // fetchAndSaveNewsData()
+
+// getLastNewsFromFirebase().then(function (res) {
+//     console.log("Retrived : ::: ", res)
+
+// }).catch(function (e) {
+//     console.log("Error : ", e)
+//     return false
+// });
+
+handleGetLatestNewsIntent()
