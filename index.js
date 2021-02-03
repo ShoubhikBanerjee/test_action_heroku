@@ -11,6 +11,7 @@ const app = conversation();
 var DelayedResponse = require('http-delayed-response');
 const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandleGenerateLeaveEmailIntent');
 const { handleControlDeviceIntent } = require('./IntentHandlers/HandleControlDeviceIntents');
+const { handleGetLatestNewsIntent } = require("./IntentHandlers/HandleLatestNewsIntent")
 
 const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
@@ -43,7 +44,7 @@ router.post('/', function (req, res) {
       console.log("2")
       sendReply(err, res)
     })
-  }else if (intent_name === "device_action") {
+  } else if (intent_name === "device_action") {
     handleControlDeviceIntent(query_text, intent_params).then((result) => {
       console.log("1")
       sendReply(result, res)
@@ -51,8 +52,16 @@ router.post('/', function (req, res) {
       console.log("2")
       sendReply(err, res)
     })
-  }else if (intent_name === "device_actions_app_less") {
+  } else if (intent_name === "device_actions_app_less") {
     handleControlDeviceIntent(query_text, intent_params).then((result) => {
+      console.log("1")
+      sendReply(result, res)
+    }).catch((err) => {
+      console.log("2")
+      sendReply(err, res)
+    })
+  } else if (intent_name === "latest_news ") {
+    handleGetLatestNewsIntent(query_text, intent_params).then((result) => {
       console.log("1")
       sendReply(result, res)
     }).catch((err) => {
