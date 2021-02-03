@@ -11,7 +11,7 @@ module.exports.handleWelcomeIntent = function (query_text, parameter, session = 
     return new Promise(function (resolve, reject) {
         try {
            
-            var index_to_choose = chooseTemplateViaLength(WelcomeResponses.length)
+            var index_to_choose = chooseTemplateViaLength(WelcomeResponses.length, return_count = 1)[0]
             console.log("Index to choose => ", index_to_choose)
             console.log("Element => ", WelcomeResponses[index_to_choose])
             sendResolveResponse(WelcomeResponses[index_to_choose], resolve)
