@@ -71,7 +71,7 @@ router.post('/', function (req, res) {
       console.log("2")
       sendReply(err, res)
     })
-  } else if (intent_name === "latest_news ") {
+  } else if (intent_name === "latest_news") {
     handleGetLatestNewsIntent(query_text, intent_params).then((result) => {
       console.log("1")
       sendReply(result, res)
@@ -79,6 +79,8 @@ router.post('/', function (req, res) {
       console.log("2")
       sendReply(err, res)
     })
+  }else{
+    console.error("Skipped Intent : ",  intent_name)
   }
 
 
