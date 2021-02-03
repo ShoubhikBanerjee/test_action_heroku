@@ -1,5 +1,6 @@
 const e = require("express");
 const fetch = require('node-fetch');
+var fs = require("fs")
 const { updateFirebaseDocument, getLastNewsFromFirebase } = require("../FirebaseHandler");
 const AppConfig = require('../Configs/AppConfig.json');
 var moment = require('moment-timezone');
@@ -9,21 +10,23 @@ module.exports.handleGetLatestNewsIntent = function (query_text, parameter, sess
     return new Promise(function (resolve, reject) {
         try {
             // var current_date = moment.tz(moment(), 'Asia/Kolkata').format('DD/MM/YYYY HH:mm');
-            getLastNewsFromFirebase().then(function (res) {
-                console.log("Retrived : ::: ", res)
-                var text = "Here is the latest news from NDTV : "
-                var response_data = res.data;
-                console.log("TYpe => ", typeof (response_data))
-                response_data.map(function (content, index) {
-                    text += " \n\n " + content.topic;
-                    text += "\n " + content.headlines.join(",.  ");
-                })
-                console.log("News  => ", text)
+            // getLastNewsFromFirebase().then(function (res) {
+            //     console.log("Retrived : ::: ", res)
+            //     var text = "Here is the latest news from NDTV : "
+            //     var response_data = res.data;
+            //     console.log("TYpe => ", typeof (response_data))
+            //     response_data.map(function (content, index) {
+            //         text += " \n\n " + content.topic;
+            //         text += "\n " + content.headlines.join(",.  ");
+            //     })
+            //     console.log("News  => ", text)
 
-            }).catch(function (e) {
-                console.log("Error : ", e)
-                sendRejectResponse("Error : in fetchingnews from FB ! :(", reject)
-            });
+            // }).catch(function (e) {
+            //     console.log("Error : ", e)
+            //     sendRejectResponse("Error : in fetchingnews from FB ! :(", reject)
+            // });
+
+            sendResolveResponse(fs.readFileSync("LatestNews.txt", "utf8"), resolve)
 
         } catch (e) {
             console.log("Error : ", e)
