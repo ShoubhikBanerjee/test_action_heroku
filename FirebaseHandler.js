@@ -1,5 +1,7 @@
 
 var admin = require("firebase-admin");
+var moment = require('moment-timezone');
+moment().tz("Asia/Kolkata").format();
 var serviceAccount = require("./Keys/auto-bot-3c17c-firebase-adminsdk-rsdhn-19b8c738ab.json");
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -18,6 +20,23 @@ module.exports.updateFirebaseDocument = function (document_name, key, value, tem
     var res = docRef.update(jsonVariable)
         .then(function () {
             console.log("Update : ")
+            return true
+        }).catch(function (e) {
+            console.log("Error : ", e)
+            return false
+        });
+    console.log(res)
+
+}
+
+module.exports.insertFirebaseDocument = function (document_name, data) {
+
+    console.log("document_name => ", document_name)
+    var docRef = db.collection('autobot-news-data').doc(document_name)
+    data['created_at'] = moment.tz(moment(), 'Asia/Kolkata').format('DD-MM-YYYY HH:mm')
+    var res = docRef.set(data)
+        .then(function () {
+            console.log("Added : ")
             return true
         }).catch(function (e) {
             console.log("Error : ", e)

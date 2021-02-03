@@ -12,7 +12,7 @@ var DelayedResponse = require('http-delayed-response');
 const { handleGenerateLeaveMailIntent } = require('./IntentHandlers/HandleGenerateLeaveEmailIntent');
 const { handleControlDeviceIntent } = require('./IntentHandlers/HandleControlDeviceIntents');
 const { handleGetLatestNewsIntent } = require("./IntentHandlers/HandleLatestNewsIntent")
-
+const { fetchAndSaveNewsData } = require("./Utils/GetAndSaveNewsData")
 const expressApp = express();
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(bodyParser.json());
@@ -36,7 +36,17 @@ router.post('/', function (req, res) {
   console.log("Intent : ", intent_name);
   console.log("Query text : ", query_text);
   console.log("Intent Param : ", intent_params)
-  if (intent_name === "generate_leave_email") {
+
+  if (intent_name === "Default Welcome Intent") {
+    handleWelcomeIntent(query_text, intent_params).then((result) => {
+      console.log("1")
+      sendReply(result, res)
+    }).catch((err) => {
+      console.log("2")
+      sendReply(err, res)
+    })
+  }
+  else if (intent_name === "generate_leave_email") {
     handleGenerateLeaveMailIntent(query_text, intent_params).then((result) => {
       console.log("1")
       sendReply(result, res)

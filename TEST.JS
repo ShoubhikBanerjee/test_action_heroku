@@ -1,6 +1,6 @@
 // const { sendEmail } = require("./Utils/SendEmail");
 
-// const { updateFirebaseDocument } = require("./FirebaseHandler");
+const { updateFirebaseDocument } = require("./FirebaseHandler");
 
 
 // sendEmail("shoubhik@hexaride.com","Test", "test")
@@ -27,12 +27,6 @@
 // const res = db.collection('autobot-device-handler').doc('personal_laptop').set(data);
 
 
-const HandleLatestNews = require("./IntentHandlers/HandleLatestNewsIntent")
+const {fetchAndSaveNewsData} = require("./Utils/GetAndSaveNewsData")
 
-HandleLatestNews.handleGetLatestNewsIntent().then((result) => {
-    console.log("1")
-    console.log(result)
-  }).catch((err) => {
-    console.log("2")
-    console.log(err)
-  })
+fetchAndSaveNewsData()
